@@ -4,322 +4,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Azure Cloud | My First Project</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #243247;
-      line-height: 1.6;
-    }
-
-    /* Navigation */
-    header {
-      background: #10243a;
-      color: white;
-      padding: 18px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: bold;
-      color: #57b8ff;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 15px;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #57b8ff;
-    }
-
-    /* Hero */
-    .hero {
-      background: linear-gradient(135deg, #10243a, #0078d4);
-      color: white;
-      text-align: center;
-      padding: 110px 20px;
-    }
-
-    .hero h1 {
-      font-size: clamp(30px, 5vw, 48px);
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      max-width: 650px;
-      margin: 0 auto 30px;
-      color: #e4efff;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #ffffff;
-      color: #0078d4;
-      padding: 13px 28px;
-      border-radius: 7px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: transform 0.3s, background 0.3s;
-    }
-
-    .btn:hover {
-      background: #d9efff;
-      transform: translateY(-3px);
-    }
-
-    /* Sections */
-    section {
-      padding: 75px 8%;
-      text-align: center;
-    }
-
-    section h2 {
-      font-size: 30px;
-      margin-bottom: 18px;
-      color: #10243a;
-    }
-
-    .section-description {
-      max-width: 720px;
-      margin: 0 auto 35px;
-      color: #596779;
-    }
-
-    /* Service cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 24px;
-      margin-top: 35px;
-    }
-
-    .card {
-      background: white;
-      padding: 35px 25px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-7px);
-    }
-
-    .card .symbol {
-      font-size: 38px;
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      color: #0078d4;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      color: #596779;
-      font-size: 15px;
-    }
-
-    /* About */
-    .about {
-      background: #eaf2fa;
-    }
-
-    .about p {
-      max-width: 750px;
-      margin: auto;
-    }
-
-    /* Contact */
-    .contact {
-      background: white;
-    }
-
-    .contact .btn {
-      background: #0078d4;
-      color: white;
-      margin-top: 15px;
-    }
-
-    .contact .btn:hover {
-      background: #005da8;
-    }
-
-    /* Footer */
-    footer {
-      background: #10243a;
-      color: #c8d5e3;
-      text-align: center;
-      padding: 25px;
-      font-size: 14px;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        justify-content: center;
-        text-align: center;
-      }
-
-      nav {
-        justify-content: center;
-        gap: 15px;
-      }
-
-      .hero {
-        padding: 75px 20px;
-      }
-
-      section {
-        padding: 55px 6%;
-      }
-    }
-  </style>
+  <title>Azure Guided Project</title>
 </head>
-
 <body>
+  <h1>Azure Static Website</h1>
+  <p>Welcome to my Azure Guided Project!</p>
 
-  <!-- Navigation -->
-  <header>
-    <div class="logo">AzureCloud</div>
+  <input type="text" id="name" placeholder="Enter your name">
+  <button onclick="sayHello()">Say Hello</button>
 
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Azure Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <p id="result"></p>
 
-  <!-- Hero Section -->
-  <main>
-    <section class="hero" id="home">
-      <h1>Welcome to My Azure Cloud Project</h1>
+  
+<script>
+  async function sayHello() {
+    const name = document.getElementById("name").value.trim();
+    const result = document.getElementById("result");
 
-      <p>
-        Exploring cloud infrastructure, web hosting,
-        storage solutions, and Microsoft Azure services.
-      </p>
+    if (!name) {
+      result.textContent = "Please enter your name.";
+      return;
+    }
 
-      <a href="#services" class="btn">Explore Services</a>
-    </section>
+    result.textContent = "Connecting to Azure...";
 
-    <!-- About Section -->
-    <section class="about" id="about">
-      <h2>About This Project</h2>
+    const apiUrl =
+      "https://azure-node-demo2026-fxfzbrb5abhqhtb3.swedencentral-01.azurewebsites.net/api/helloazure";
 
-      <p>
-        This website was created as part of the
-        Introduction to Cloud Infrastructure guided projects.
+    try {
+      const response = await fetch(
+        `${apiUrl}?name=${encodeURIComponent(name)}`
+      );
 
-        It demonstrates how a static website can be
-        deployed and hosted using Microsoft Azure Blob Storage.
-      </p>
-    </section>
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
 
-    <!-- Services Section -->
-    <section id="services">
-      <h2>Microsoft Azure Services</h2>
+      const data = await response.json();
 
-      <p class="section-description">
-        Discover some of the cloud technologies used
-        to build, manage, and secure modern applications.
-      </p>
+      result.textContent = data.message;
 
-      <div class="cards">
-
-        <article class="card">
-          <div class="symbol">☁️</div>
-          <h3>Azure Blob Storage</h3>
-          <p>
-            Store files, images, documents, and
-            host static websites in the cloud.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="symbol">🖥️</div>
-          <h3>Virtual Machines</h3>
-          <p>
-            Run Windows and Linux virtual servers
-            without owning physical hardware.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="symbol">🔐</div>
-          <h3>Microsoft Entra ID</h3>
-          <p>
-            Manage user identities, authentication,
-            and access to cloud resources.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="symbol">📊</div>
-          <h3>Azure Monitor</h3>
-          <p>
-            Monitor application performance,
-            resource health, and activity logs.
-          </p>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <h2>Learn More</h2>
-
-      <p>
-        Interested in Microsoft Azure and cloud infrastructure?
-        Explore the official Microsoft Learn platform.
-      </p>
-
-      <a
-        href="https://learn.microsoft.com/training/azure/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn">
-        Visit Microsoft Learn
-      </a>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>
-      &copy; 2026 Azure Cloud Guided Project |
-      Built with HTML & CSS | Hosted on Microsoft Azure
-    </p>
-  </footer>
+    } catch (error) {
+      result.textContent = "Error connecting to Azure Function.";
+      console.error(error);
+    }
+  }
+</script>
 
 </body>
 </html>
